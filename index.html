@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computer Programming Anxiety Scale (CPAS) Questionnaire</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Choo &amp; Cheung (1991)</p>
+      <h1>Computer Programming Anxiety Scale</h1>
+      <p class="lede">
+        Answer each statement from Appendix 1 of <em>On Meaningful Measurement:</em>
+        Junior College Pupils' Anxiety towards Computer Programming (JETS 19:327-343)
+        using the original 5-point scale. Once every prompt is completed the page will
+        estimate your anxiety profile across the three CPAS subscales: <strong>Confidence</strong>,
+        <strong>Errors</strong> and <strong>Significant Others</strong>.
+      </p>
+      <p class="note">This interactive version follows the structure of the published instrument.
+        Automated scoring approximates the qualitative bands reported in the article.
+        For official use, convert the total scores to logits with the paper's rulers.</p>
+    </header>
+
+    <section class="instructions">
+      <h2>How to respond</h2>
+      <ol>
+        <li>Select exactly one option for every statement (0 = Never true, 4 = Always true).</li>
+        <li>The colour accent on each legend shows which CPAS subscale the item belongs to.</li>
+        <li>When you are finished, press <strong>Calculate anxiety profile</strong> to view the per-subscale bands
+          alongside the qualitative interpretations from Table&nbsp;1 in the article.</li>
+        <li>Use <strong>Reset</strong> at any time to clear the form.</li>
+      </ol>
+    </section>
+
+    <section class="subscale-overview">
+      <h2>Where the three subscales come from</h2>
+      <p>
+        Choo &amp; Cheung grouped the 19 items into three domains to capture different forms of anxiety a junior
+        college programmer might experience. Two of the domains measure <strong>state anxiety</strong>&mdash;feelings that surge as
+        situations change in class or during lab work&mdash;while one domain measures <strong>trait anxiety</strong>, the more
+        persistent sense of capability that the student carries from task to task.
+      </p>
+      <dl>
+        <dt>Confidence (trait anxiety)</dt>
+        <dd>
+          Items 1, 4, 5, 8, 11, 13, 16 and 19 probe a pupil’s general belief in being able to tackle programming
+          problems. High scores here indicate a chronic lack of confidence independent of specific classroom events.
+        </dd>
+        <dt>Errors (state anxiety)</dt>
+        <dd>
+          Items 2, 6, 9, 12 and 17 check reactions when code fails, when bugs persist, or when repeated corrections
+          are required. This captures the moment-to-moment emotional spike that occurs as the student debugs.
+        </dd>
+        <dt>Significant Others (state anxiety)</dt>
+        <dd>
+          Items 3, 7, 10, 14, 15 and 18 examine how peers and teachers influence anxiety. Feeling scrutinised or
+          outperformed by “significant others” can trigger situational anxiety even if overall confidence is stable.
+        </dd>
+      </dl>
+      <p>
+        The banded interpretations in the results box summarise the likely behaviours within each subscale. Use them
+        to distinguish whether support should focus on long-term efficacy beliefs (trait) or immediate classroom
+        conditions (state).
+      </p>
+    </section>
+
+    <section class="questionnaire">
+      <form id="quizForm" novalidate>
+        <div class="scale-key" aria-hidden="true">
+          <span>Scale:</span>
+          <span>0 – Never true</span>
+          <span>1 – Seldom true</span>
+          <span>2 – Sometimes true</span>
+          <span>3 – Often true</span>
+          <span>4 – Always true</span>
+        </div>
+        <div id="questionContainer"></div>
+        <div class="form-actions">
+          <button type="submit" class="primary">Calculate anxiety profile</button>
+          <button type="button" id="resetBtn" class="ghost">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite"></section>
+  </main>
+</body>
+</html>
