@@ -65,6 +65,199 @@ const questions = [
   { number: 19, text: "I do not feel confident whenever I work on the computer.", subscale: "confidence" }
 ];
 
+const RESOURCE_MAP = {
+  1: {
+    title: "My learning history narrative worksheet",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Unpack where discomfort with computers comes from and start rewriting that story.",
+    examples: [
+      { title: "Early memories", text: "The first time I remember using a computer was…" },
+      { title: "Alternative narrative", text: "If I told my story as 'I'm learning to code' instead of 'I'm bad at code', it would sound like…" }
+    ]
+  },
+  2: {
+    title: "Post-session reflection prompts",
+    cluster: "Evaluation and implementation supports",
+    type: "Session reflection",
+    summary: "Review what you tried while debugging and what happened to build debugging self-efficacy.",
+    examples: [
+      { title: "What I tried", text: "Today I worked on…" },
+      { title: "Next tweak", text: "Next time I'll change one thing in how I work, which is…" }
+    ]
+  },
+  3: {
+    title: "Group agreements for supportive labs",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Classroom culture tool",
+    summary: "Co-created norms that reduce fear of embarrassment when asking for help.",
+    examples: [
+      { title: "Normalize errors", text: "We treat bugs and errors as normal, not as signs someone doesn't belong." },
+      { title: "Ask for help fast", text: "It's OK to say 'I'm stuck' within 5 minutes of trying on your own." }
+    ]
+  },
+  4: {
+    title: "Question-asking scripts",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Sentence stems for clarifying jargon and lowering shame when terms are confusing.",
+    examples: [
+      { title: "Context first", text: "I'm working on [brief task] in [language/tool]. I expected it to… but instead it…" },
+      { title: "What I want from you", text: "Right now I'd like: a small hint / a bigger explanation / a code example." }
+    ]
+  },
+  5: {
+    title: "Self-compassion and inner-critic dialogue sheet",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Balances the \"I cannot do this\" belief with kinder counter-statements.",
+    examples: [
+      { title: "Inner critic line", text: "You're terrible at this. Everyone else gets it." },
+      { title: "Compassionate reply", text: "Tests are supposed to catch issues. You're learning like everyone else. What's one tiny piece to improve first?" }
+    ]
+  },
+  6: {
+    title: "Micro-practices cheat sheet for instructors",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Instructor micro-practices",
+    summary: "Low-effort phrases and moves that normalise bugs and make errors feel safe.",
+    examples: [
+      { title: "Normalize errors aloud", text: "If you have zero error messages today, you're either a genius or you didn't run your code." },
+      { title: "3-second pause", text: "After asking a question, silently count to 3 before jumping in; say 'I'll give folks a few seconds to think.'" }
+    ]
+  },
+  7: {
+    title: "Peer-observation rubric",
+    cluster: "Evaluation and implementation supports",
+    type: "Peer observation",
+    summary: "Prompts instructor practices that avoid shaming or cold-calling around mistakes.",
+    examples: [
+      { title: "Normalising struggle", text: "Instructor explicitly frames errors/bugs as normal parts of learning." },
+      { title: "Help-seeking norms", text: "Structures like 'Ask 3 then me' or a buddy system are visible and encouraged." }
+    ]
+  },
+  8: {
+    title: "When I'm Stuck flowchart",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Step-by-step plan for the first 5–10 minutes when code will not run.",
+    examples: [
+      { title: "Check usual suspects", text: "Typos, missing imports/packages, wrong file saved/run, mismatched brackets/indent." },
+      { title: "Make one small experiment", text: "Add a print/log or run just a tiny part of the code to see what changes." }
+    ]
+  },
+  9: {
+    title: "Pre-session check-in cards",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Name worries about programs failing before you start, and plan how to respond.",
+    examples: [
+      { title: "Today I feel", text: "Worried / Curious / Tired / Excited (circle one)." },
+      { title: "What would help", text: "A slower pace / more examples / a buddy / reassurance it's OK to ask 'basic' questions." }
+    ]
+  },
+  10: {
+    title: "Feedback practices guide",
+    cluster: "Programme-level Programming Companion",
+    type: "Instructor guidance",
+    summary: "Helps teachers give strategy-focused feedback instead of reinforcing labels.",
+    examples: [
+      { title: "Process-focused stem", text: "I can see you're trying X strategy here – that's a strong choice because…" },
+      { title: "Wise feedback", text: "I'm giving you these comments because I have high expectations and I'm confident you can reach them." }
+    ]
+  },
+  11: {
+    title: "When I'm Stuck flowchart",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Structured sequence for moments when errors make it hard to think.",
+    examples: [
+      { title: "Read the error slowly", text: "Underline the file, line number, and key words before guessing." },
+      { title: "Make one small experiment", text: "Add a print/log or run just a tiny part of the code to see what changes." }
+    ]
+  },
+  12: {
+    title: "Self-compassion and inner-critic dialogue sheet",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Eases the self-criticism and frustration that flare during repeated corrections.",
+    examples: [
+      { title: "Inner critic line", text: "You're terrible at this. Everyone else gets it." },
+      { title: "Compassionate reply", text: "Tests are supposed to catch issues. You're learning like everyone else. What's one tiny piece to improve first?" }
+    ]
+  },
+  13: {
+    title: "Personal anxiety-pattern map",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Maps the pattern from rising complexity to overload so it can be recognised and managed.",
+    examples: [
+      { title: "Situation and thought", text: "Pair programming starts -> 'Everyone will see I don't belong here.'" },
+      { title: "Alternative thought and action", text: "Most people focus on their own code; ask one clarification question and run the code anyway." }
+    ]
+  },
+  14: {
+    title: "Trait-aware learning journals template",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Regular prompts to track progress and reduce social comparison anxiety.",
+    examples: [
+      { title: "Noticing comparison", text: "A moment I compared myself to others was… The story I told myself was… A more realistic story is…" },
+      { title: "Next week's experiment", text: "One tiny change I'll test in how I study or practice is…" }
+    ]
+  },
+  15: {
+    title: "Self-compassion and inner-critic dialogue sheet",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Counters the \"everyone else can do this but me\" narrative.",
+    examples: [
+      { title: "Inner critic line", text: "You're terrible at this. Everyone else gets it." },
+      { title: "Compassionate reply", text: "Tests are supposed to catch issues. You're learning like everyone else. What's one tiny piece to improve first?" }
+    ]
+  },
+  16: {
+    title: "When I'm Stuck flowchart",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Designed for blank-mind moments to offer immediate next steps.",
+    examples: [
+      { title: "Stop and describe", text: "Write one sentence each: what I expected vs what actually happened." },
+      { title: "Check usual suspects", text: "Typos, missing imports/packages, wrong file saved/run, mismatched brackets/indent." }
+    ]
+  },
+  17: {
+    title: "Pre-session check-in cards",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Plan in advance how to respond when errors appear so tension does not spike.",
+    examples: [
+      { title: "One thing I'm nervous about", text: "Making a mistake in front of others / breaking something / not keeping up / other: ____" },
+      { title: "If I get stuck, I will…", text: "Try my 'When I'm Stuck' steps, then ask X person." }
+    ]
+  },
+  18: {
+    title: "Question-asking scripts",
+    cluster: "Session-level Programming Anxiety Toolkit",
+    type: "Learner-facing support",
+    summary: "Concrete stems for joining conversations and asking for explanations without shame.",
+    examples: [
+      { title: "Context first", text: "I'm working on [brief task] in [language/tool]. I expected it to… but instead it…" },
+      { title: "What I want from you", text: "Right now I'd like: a small hint / a bigger explanation / a code example." }
+    ]
+  },
+  19: {
+    title: "Values and motivation sheet",
+    cluster: "Programme-level Programming Companion",
+    type: "Reflective learner tool",
+    summary: "Anchors low confidence to personally meaningful reasons for learning to code.",
+    examples: [
+      { title: "Curiosity row", text: "Coding lets me take things apart and rebuild them; tiny action: explore one 'what if' for 10 minutes." },
+      { title: "Helping others row", text: "Coding can make others' jobs easier; tiny action: ask a peer what small tool might help them." }
+    ]
+  }
+};
+
 renderQuestions();
 setUpHandlers();
 
@@ -208,6 +401,99 @@ function determineBand(average) {
   return 3;
 }
 
+function findResourceRecommendations(answers) {
+  const entries = Object.entries(answers)
+    .map(([number, score]) => ({ number: Number(number), score }))
+    .sort((a, b) => b.score - a.score);
+
+  const strongSignals = entries.filter(({ score }) => score >= 3);
+  const orderedPool = strongSignals.length ? strongSignals.concat(entries.filter(({ score }) => score < 3)) : entries;
+  const recMap = new Map();
+
+  for (const { number, score } of orderedPool) {
+    const resource = RESOURCE_MAP[number];
+    if (!resource) continue;
+
+    if (!recMap.has(resource.title)) {
+      recMap.set(resource.title, {
+        ...resource,
+        triggers: [number],
+        score
+      });
+    } else {
+      const existing = recMap.get(resource.title);
+      existing.triggers.push(number);
+      existing.score = Math.max(existing.score, score);
+    }
+    if (recMap.size >= 4) break;
+  }
+
+  return Array.from(recMap.values()).map((item) => {
+    const linkedQuestions = item.triggers
+      .map((num) => questions.find((q) => q.number === num))
+      .filter(Boolean);
+
+    return { ...item, questions: linkedQuestions };
+  });
+}
+
+function renderResourceRecommendations(answers) {
+  const recommendations = findResourceRecommendations(answers);
+  if (!recommendations.length) {
+    return "";
+  }
+
+  const highAnxiety = Object.values(answers).some((value) => value >= 3);
+  const descriptor = highAnxiety ? "items rated Often or Always true" : "your highest-scoring items";
+
+  const itemsMarkup = recommendations
+    .map((rec) => {
+      const mainQuestion = rec.questions[0];
+      const extraCount = rec.questions.length > 1 ? ` + ${rec.questions.length - 1} related item(s)` : "";
+      const triggerText = mainQuestion
+        ? `Triggered by Q${mainQuestion.number}${extraCount}: ${mainQuestion.text}`
+        : "Triggered by your highest-scoring items.";
+      const examplesMarkup = rec.examples && rec.examples.length
+        ? `
+          <div class="resource-extract">
+            <p class="extract-label">Sample snippet:</p>
+            <ul>
+              ${rec.examples
+                .slice(0, 2)
+                .map((ex) => `<li><strong>${ex.title}:</strong> ${ex.text}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        `
+        : "";
+
+      return `
+        <li class="resource-card">
+          <div class="resource-meta">
+            <span class="resource-chip">${rec.cluster}</span>
+            <span class="resource-chip ghost">${rec.type}</span>
+            <span class="resource-chip muted">Score ${rec.score}</span>
+          </div>
+          <h4>${rec.title}</h4>
+          <p class="resource-summary">${rec.summary}</p>
+          ${examplesMarkup}
+          <p class="resource-trigger">${triggerText}</p>
+        </li>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="resource-recs">
+      <h3>Resource roadmap</h3>
+      <p>Based on ${descriptor}, start with these co-created supports:</p>
+      <ol class="resource-list">
+        ${itemsMarkup}
+      </ol>
+    </div>
+  `;
+}
+
 function renderResults(summary, answers, target) {
   const totalItems = questions.length;
   const grandTotal = Object.values(answers).reduce((sum, value) => sum + value, 0);
@@ -231,6 +517,8 @@ function renderResults(summary, answers, target) {
     )
     .join("");
 
+  const recommendations = renderResourceRecommendations(answers);
+
   target.classList.remove("hidden");
   target.innerHTML = `
     <h2>Your CPAS profile</h2>
@@ -253,5 +541,6 @@ function renderResults(summary, answers, target) {
       </tbody>
     </table>
     <p class="interpretation">Band narratives are reproduced and paraphrased from Table&nbsp;1 (Choo &amp; Cheung, 1991). Percentile and logit conversions in the paper should be used when norm-referenced reporting is required.</p>
+    ${recommendations}
   `;
 }

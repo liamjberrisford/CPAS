@@ -86,6 +86,44 @@ body {
   color: var(--text-muted);
 }
 
+.roadmap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.roadmap-card {
+  border: 1px solid var(--border);
+  background: #fafbff;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.roadmap-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.roadmap-card p {
+  margin: 0 0 0.35rem;
+  color: var(--text-muted);
+}
+
+.roadmap-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+}
+
 .instructions ol {
   margin: 0;
   padding-left: 1.2rem;
@@ -299,6 +337,97 @@ button.ghost {
 .interpretation {
   color: var(--text-muted);
   margin: 0.35rem 0 0;
+}
+
+.resource-recs {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.resource-card {
+  border: 1px solid var(--border);
+  background: #fdfefe;
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  box-shadow: 0 8px 24px rgba(20, 36, 74, 0.05);
+}
+
+.resource-card h4 {
+  margin: 0 0 0.35rem;
+}
+
+.resource-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.resource-chip {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: #eef3ff;
+  color: #284167;
+  border: 1px solid transparent;
+}
+
+.resource-chip.ghost {
+  background: #f7f7f7;
+  border-color: var(--border);
+  color: #2f3747;
+}
+
+.resource-chip.muted {
+  background: #eef1f5;
+  border-color: #e3e6ec;
+  color: var(--text-muted);
+}
+
+.resource-summary {
+  margin: 0;
+}
+
+.resource-trigger {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.resource-extract {
+  margin: 0.5rem 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.resource-extract .extract-label {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.resource-extract ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--text-muted);
+}
+
+.resource-extract li + li {
+  margin-top: 0.3rem;
 }
 
 @media (max-width: 640px) {
